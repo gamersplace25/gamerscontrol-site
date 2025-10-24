@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GamersPlace - Tournament App</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat',sans-serif;}
+  body { background:#0b0b0b; color:#fff; overflow-x:hidden; }
+  a { text-decoration:none; color:inherit; }
+
+  /* Parallax Background Layers */
+  .parallax-layer {
+    position: fixed; width:100%; height:100%;
+    top:0; left:0;
+    background-repeat:no-repeat;
+    background-size:cover;
+    z-index:-2;
+  }
+  .layer1 { background-image:url('https://images.unsplash.com/photo-1603382425-1c7d8c4c3b8f'); opacity:0.5; }
+  .layer2 { background-image:url('https://images.unsplash.com/photo-1603382425-1c7d8c4c3b8f'); opacity:0.3; }
+
+  /* Neon Particles */
+  .particle {
+    position:absolute; width:8px; height:8px;
+    background: linear-gradient(45deg,#00ffea,#00b3ff);
+    border-radius:50%; opacity:0.6;
+    animation: floatParticle 15s linear infinite;
+  }
+  @keyframes floatParticle {
+    0% {transform: translateY(0) translateX(0);}
+    50% {transform: translateY(-300px) translateX(200px);}
+    100% {transform: translateY(0) translateX(0);}
+  }
+
+  /* Header / Hero */
+  header{
+    height:100vh; display:flex;align-items:center;justify-content:center;text-align:center;position:relative;
+  }
+  header::after{
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:-1;
+  }
+  .header-content{position:relative; z-index:1; animation:fadeUp 1s ease forwards;}
+  header h1{font-size:4rem; color:#00ffea; text-shadow:2px 2px 20px #000;}
+  header p{font-size:1.5rem; margin:20px 0; color:#fff;}
+  .btn-download{
+    padding:15px 40px;margin:10px;font-size:1.2rem;font-weight:700;
+    border:none;border-radius:10px;cursor:pointer;
+    background: linear-gradient(90deg,#00ffea,#00b3ff);
+    color:#000; transition: all 0.4s ease; box-shadow:0 5px 15px rgba(0,255,234,0.5);
+  }
+  .btn-download:hover{
+    transform: translateY(-5px) scale(1.05);
+    box-shadow:0 15px 25px rgba(0,255,234,0.7);
+  }
+
+  /* Features */
+  section.features{text-align:center;padding:80px 20px;}
+  section.features h2{font-size:3rem;color:#00ffea;margin-bottom:50px; animation:fadeUp 1s ease forwards;}
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+  .feature-item{
+    background:#111;padding:30px;border-radius:15px;
+    transition: transform 0.4s, box-shadow 0.4s; opacity:0; transform:translateY(30px);
+  }
+  .feature-item.visible{opacity:1; transform:translateY(0);}
+  .feature-item h3{color:#00ffea;margin-bottom:15px;}
+  .feature-item p{color:#ccc;}
+
+  /* Screenshots */
+  section.screenshots{background:#111;text-align:center;padding:80px 20px;}
+  section.screenshots h2{font-size:3rem;color:#00ffea;margin-bottom:50px;}
+  .screenshots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+  .screenshots-grid img{
+    width:100%; border-radius:15px;
+    box-shadow:0 5px 25px rgba(0,255,234,0.6);
+    transform: translateY(50px); opacity:0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+  .screenshots-grid img.visible{transform: translateY(0); opacity:1;}
+
+  /* CTA */
+  section.cta{
+    background: linear-gradient(90deg, #00ffea, #00b3ff);
+    color:#000;text-align:center;padding:80px 20px;
+  }
+  section.cta h2{font-size:3rem;margin-bottom:30px;}
+
+  /* Footer */
+  footer{padding:30px 20px;text-align:center;background:#0a0a0a;color:#666;font-size:14px;}
+  footer a{color:#00ffea;margin:0 10px;}
+
+  /* Animations */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+  @media(max-width:768px){
+    header h1{font-size:2.5rem;}
+    header p{font-size:1.2rem;}
+    section.features h2, section.screenshots h2, section.cta h2{font-size:2.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Parallax Layers -->
+<div class="parallax-layer layer1"></div>
+<div class="parallax-layer layer2"></div>
+
+<!-- Neon Particles -->
+<div class="particle" style="top:20%; left:10%; animation-duration:12s;"></div>
+<div class="particle" style="top:50%; left:70%; animation-duration:18s;"></div>
+<div class="particle" style="top:80%; left:30%; animation-duration:15s;"></div>
+<div class="particle" style="top:30%; left:50%; animation-duration:20s;"></div>
+
+<!-- Header -->
+<header>
+    <div class="header-content">
+        <h1>GamersPlace</h1>
+        <p>Ultimate Tournament App – Organize, Compete & Win!</p>
+        <a href="https://ga-fs.primexop.com/11614/androidBuilds/gamersplaceV1.apk" class="btn-download">Download APK</a>
+    </div>
+</header>
+
+<!-- Features -->
+<section class="features">
+    <h2>App Features</h2>
+    <div class="feature-grid">
+        <div class="feature-item"><h3>Create Tournaments</h3><p>Set up tournaments easily with a few clicks.</p></div>
+        <div class="feature-item"><h3>Live Leaderboard</h3><p>Track scores and rankings in real-time.</p></div>
+        <div class="feature-item"><h3>Multi-Game Support</h3><p>Host tournaments for multiple popular games.</p></div>
+        <div class="feature-item"><h3>Free & Fast</h3><p>Smooth, free experience with minimal loading.</p></div>
+    </div>
+</section>
+
+<!-- Screenshots -->
+<section class="screenshots">
+    <h2>App Screenshots</h2>
+    <div class="screenshots-grid">
+        <img src="https://i.ibb.co/84PHtWcg/84PHtWcg.png" alt="Screenshot 1">
+        <img src="https://i.ibb.co/FkfSMc72/FkfSMc72.png" alt="Screenshot 2">
+        <img src="https://i.ibb.co/VcCTZWK7/VcCTZWK7.png" alt="Screenshot 3">
+        <img src="https://i.ibb.co/XrqczcWn/XrqczcWn.png" alt="Screenshot 4">
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Download GamersPlace Now!</h2>
+    <a href="https://ga-fs.primexop.com/11614/androidBuilds/gamersplaceV1.apk" class="btn-download">Download APK</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 GamersPlace. All Rights Reserved. | 
+    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+</footer>
+
+<script>
+  // Features Animation
+  const features = document.querySelectorAll('.feature-item');
+  const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+          if(entry.isIntersecting){
+              entry.target.classList.add('visible');
+          }
+      });
+  }, {threshold:0.3});
+  features.forEach(feature=>observer.observe(feature));
+
+  // Screenshots Scroll Animation
+  const screenshots = document.querySelectorAll('.screenshots-grid img');
+  const observer2 = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+          if(entry.isIntersecting){
+              entry.target.classList.add('visible');
+          }
+      });
+  }, {threshold:0.3});
+  screenshots.forEach(s => observer2.observe(s));
+</script>
+
+</body>
+</html>
